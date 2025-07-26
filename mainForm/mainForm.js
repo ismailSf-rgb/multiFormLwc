@@ -26,6 +26,7 @@ export default class MainForm extends LightningElement {
   handleChange(event) {
     const { name, value } = event.target;
     this.formData[name] = value;
+    this.controller.handleChange({name, value});
   }
 
   handleSubmit() {

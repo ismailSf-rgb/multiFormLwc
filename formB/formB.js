@@ -23,6 +23,10 @@ export default class FormB extends LightningElement {
     return this.errorMessage;
   }
 
+  handleChange({name, value}) {
+    //logic when handling changes
+  }
+
   validate(formData) {
     //validation logic
   }
