@@ -1,0 +1,46 @@
+Le sélecteur définit un type ou un critère qui est donné à une factory 
+pour choisir et créer le contrôleur approprié, lequel gère ensuite la logique spécifique à ce type.
+
++-------------------+
+|   MainForm (LWC)  |
+|-------------------|
+| - controller      |
+| - fields          |
+| - warningMessage
+| - html
+|-------------------|
+| + connectedCallback()     --> sets controller via factory
+| + submit(values)          --> controller.submit(values, fields)
+| + validate(values)        --> controller.validate(values)
+| + render warningMessage   <-- from controller
++-------------------+
+         |
+      context (example : (context : {typeConfig === 'SouscriptionOpp'})
+         |
+         v
++-------------------+
+|  FormTypeSelector   |  (Selector Pattern) (Strategy to determine type)
+|-------------------------------------------|
+| + createFormController(type): returns type|
++-------------------------------------------+
+         |
+        type (example : formA)
+         |
+         v
++--------------------------+
+|  FormControllerFactory   |  (Factory Pattern)
+|--------------------------|
+| + createFormController(type): returns controller
++--------------------------+
+         |
+         v
++--------------------+         +--------------------+
+|  FormAController    |◄────┐  |  FormBController    |
+|--------------------|     │  |--------------------|
+| + getFields()      |     │  | + getFields()      |
+| + validate(values) |◄──┐ │  | + validate(values) |
+| + submit(values, fields) │  | + submit(...)       |
+| + getWarning()     |     │  | + getWarning()     |
++--------------------+     │  +--------------------+
+                           │
+          FormTypeSelector (Strategy to determine type)

@@ -1,0 +1,27 @@
+<template>
+    <template if:true={error}>
+      <div class="slds-text-color_error slds-m-bottom_small">
+        {error}
+      </div>
+    </template>
+  
+    <template for:each={fields} for:item="field">
+      <lightning-input
+        key={field.name}
+        label={field.label}
+        name={field.name}
+        type={field.type}
+        onchange={handleChange}>
+      </lightning-input>
+    </template>
+    
+    <template if:true={warning}>
+      <div class="slds-text-color_error slds-m-bottom_small">
+        {warning}
+      </div>
+    </template>
+
+    <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+    
+  </template>
+  
