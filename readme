@@ -21,8 +21,7 @@ pour choisir et créer le contrôleur approprié, lequel gère ensuite la logiqu
 +-------------------+
 |  FormTypeSelector   |  (Selector Pattern) (Strategy to determine type)
 |-------------------------------------------|
-| + createFormController(type): returns type|
-+-------------------------------------------+
+         |
          |
         type (example : formA)
          |
