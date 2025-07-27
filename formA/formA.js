@@ -2,6 +2,8 @@ import { LightningElement } from 'lwc';
 
 export default class FormA extends LightningElement {
 
+  errorMessage;
+
   constructor(context) {
     if(context.whatever) this.errorMessage = "vous ne pouvez pas contacter le siège"
   }
