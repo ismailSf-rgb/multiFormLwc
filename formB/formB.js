@@ -4,7 +4,7 @@ export default class FormB extends LightningElement {
 
   errorMessage;
 
-  FormB(context) {
+  constructor(context) {
     if(context.whatever) this.errorMessage = "vous ne pouvez pas contacter le siège"
   }
 
